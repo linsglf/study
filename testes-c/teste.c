@@ -4,7 +4,7 @@
 
 typedef struct 
 {
-  int codigo;
+  char codigo[10];
   int preco;
   int quantidade;
   char nome[30];
@@ -16,7 +16,7 @@ Mercadoria Cadastrar(){
     Mercadoria produto;
 
     printf("Qual codigo da mercadoria? :");
-    scanf("%d", &produto.codigo);
+    fgets(produto.codigo, 9, stdin);
     fflush(stdin);
     printf("Qual o valor da mercadoria? :");
     scanf("%d", &produto.preco);
@@ -28,7 +28,7 @@ Mercadoria Cadastrar(){
     fgets(produto.nome, 29, stdin);
     fflush(stdin);
     printf("\n");
-
+    
     return produto;
 }
 
@@ -54,10 +54,12 @@ int main()
 
       printf("quantidade de cadastros: ");
       scanf("%d", &qtd_cadastro);
+      fflush(stdin);
 
       for (i = 0; i < qtd_cadastro; i++){
         estoque[i] = Cadastrar();
         printf("index da mercadoria: %d\n", i);
+        printf("||%s||", estoque[i].codigo);
       }
     }
 
@@ -80,7 +82,7 @@ int main()
       system("cls");
       printf("NOME: %s", estoque[i].nome);
       printf("\n");
-      printf("Codigo do produto: %d", estoque[i].codigo);
+      printf("Codigo do produto: %s", estoque[i].codigo);
       printf("\n");
       printf("Quantidade: %d", estoque[i].quantidade);
       printf("\n");
