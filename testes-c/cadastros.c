@@ -5,7 +5,7 @@
 
 typedef struct{
     char nome[30];
-    long  cpf;
+    char  cpf[12];
 }Pessoa;
 
 Pessoa Quantidade_Cadastros[];
@@ -26,8 +26,8 @@ Pessoa Cadastrar(){
     printf("NOME: ");
     fgets(pessoas.nome, 29, stdin);
     printf("CPF: ");
-    scanf(" %ld", &pessoas.cpf);
-    scanf("%*c");
+    fgets(pessoas.cpf, 12, stdin);
+    fflush(stdin);
     
     return pessoas;
 }
@@ -35,7 +35,7 @@ Pessoa Cadastrar(){
 void printCadastros(Pessoa pessoas_print){
 
     printf("NOME: %s", pessoas_print.nome);
-    printf("CPF: %ld\n", pessoas_print.cpf);
+    printf("CPF: %s\n", pessoas_print.cpf);
     printf("\n");
 }
 
