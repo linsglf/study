@@ -169,7 +169,7 @@ int main()
     }
     
     if(opcao == 5){
-      printf("Voce saiu!");
+      printf("Voce saiu! ");
     break;
     }
   }
