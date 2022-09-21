@@ -5,7 +5,7 @@
 typedef struct 
 {
   char codigo[10];
-  int preco;
+  float preco;
   int quantidade;
   char nome[30];
 }Mercadoria;
@@ -19,7 +19,7 @@ Mercadoria Cadastrar(){
     gets(produto.codigo);
     fflush(stdin);
     printf("Qual o valor da mercadoria? :");
-    scanf("%d", &produto.preco);
+    scanf("%f", &produto.preco);
     fflush(stdin);
     printf("Qual a quantidade? : ");
     scanf("%d", &produto.quantidade);
@@ -31,6 +31,21 @@ Mercadoria Cadastrar(){
     
     return produto;
 }
+
+/*void removerMercadoria(){
+    char codigo[10];
+    printf("Qual o codigo da mercadoria que deseja remover? :");
+    gets(codigo);
+    fflush(stdin);
+    for(int i = 0; i < 100; i++){
+        if(strcmp(estoque[i].codigo, codigo) == 0){
+            estoque[i].codigo[0] = '\0';
+            estoque[i].preco = 0;
+            estoque[i].quantidade = 0;
+            estoque[i].nome[0] = '\0';
+        }
+    }
+}*/
 
 
 int main()
@@ -55,7 +70,7 @@ int main()
 
       for (i = 0; i < qtd_cadastro; i++){
         estoque[i] = Cadastrar();
-        printf("index da mercadoria: %d\n", i);
+        printf("Numero da mercadoria: %d\n", i);
         printf("||%s||\n", estoque[i].codigo);
         printf("\n");
       }
@@ -73,7 +88,7 @@ int main()
         index++;
       }
       
-      printf("index da mercadoria desejada: ");
+      printf("Numero da mercadoria desejada: ");
       scanf("%d", &i);
       system("cls");
       printf("NOME: %s", estoque[i].nome);
@@ -82,7 +97,7 @@ int main()
       printf("\n");
       printf("Quantidade: %d", estoque[i].quantidade);
       printf("\n");
-      printf("Preco do produto: %dR$\n", estoque[i].preco);
+      printf("Preco do produto: %.2fR$\n", estoque[i].preco);
       printf("\n");
       system("pause");
     }
@@ -91,14 +106,14 @@ int main()
     {
       system("cls");
 
-      int valor_total = 0;
+      float valor_total = 0;
 
       for (int i = 0; i < qtd_cadastro; i++)
       {
-        valor_total = valor_total + (estoque[i].preco * estoque[i].quantidade);
+        valor_total = valor_total + (estoque[i].preco * (float)estoque[i].quantidade);
       }
       
-      printf("VALOR: %d\n\n", valor_total);
+      printf("Valor total da mercadoria: %.2fR$\n\n", valor_total);
       system("pause");
       
     }
@@ -119,7 +134,7 @@ int main()
           index++;
         }
     
-        printf("Index da mercadoria: ");
+        printf("Mercadoria numero: ");
         scanf("%d", &opcao_alteracao);
 
         for (int i = opcao_alteracao; i == opcao_alteracao; i++)
@@ -140,9 +155,9 @@ int main()
 
           if (escolhaAlt == 2)
           {
-            printf("Preco do produto: %dR$\n", estoque[i].preco);
+            printf("Preco do produto: %.2fR$\n", estoque[i].preco);
             printf("Novo preco do produto: ");
-            scanf("%d", &estoque[i].preco);
+            scanf("%f", &estoque[i].preco);
             fflush(stdin);
           }
 
@@ -161,13 +176,28 @@ int main()
             gets(estoque[i].codigo);
             fflush(stdin);
           }
-          
         }
         
         system("pause");
 
     }
     
+    /*if(opcao == x){
+        char codigo[10];
+        printf("Qual o codigo da mercadoria que deseja remover? :");
+        gets(codigo);
+        fflush(stdin);
+        for(int i = 0; i < 100; i++){
+            if(strcmp(estoque[i].codigo, codigo) == 0){
+                estoque[i].codigo[0] = '\0';
+                estoque[i].preco = 0;
+                estoque[i].quantidade = 0;
+                estoque[i].nome[0] = '\0';
+            }
+        }
+    }*/
+    
+
     if(opcao == 5){
       printf("Voce saiu! ");
     break;
