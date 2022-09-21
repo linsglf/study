@@ -1,2 +1,2 @@
 # study
- repositório teste
+ repositório de práticas em C
